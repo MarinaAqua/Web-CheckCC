@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>CLUB GRATIS CC Checker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" href="https://raw.githubusercontent.com/MarinaAqua/MarinaAqua/main/my-profil.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -49,7 +50,7 @@
       width: 100%;
       padding: 14px;
       font-size: 16px;
-      background-color: #007bff;
+      background-color: rgba(15, 23, 42, 0.5);
       color: white;
       border: none;
       border-radius: 8px;
@@ -59,7 +60,7 @@
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: rgba(15, 23, 42, 0.5);
     }
 
     .stats {
@@ -150,15 +151,19 @@
     <h2>🔥 Credit Card Checker 🔥</h2>
 
     <textarea id="cc-input" rows="10" placeholder="4444333322221111|12|2026|123"></textarea>
-    <button onclick="check()" id="check-btn">Cek Sekarang</button>
+    <button onclick="check()" id="check-btn">
+      <i class='fa fa-play' style='font-size:24px;color:green'></i>
+    </button>
 
-    <div class="stats" id="stats">🔁 Siap mengecek kartu...</div>
+    <div class="stats" id="stats">
+      <i class='fa fa-cc-stripe'></i> Check Card Ready...</div>
 
     <div id="results"></div>
     
     </div>
     
     <div class="container">
+      <center>
     <footer class="mt-8 pb-6">
         <div class="divider mb-6"></div>
         <div class="footer p-6">
@@ -171,25 +176,19 @@
                 href="https://github.com/"
                 class="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center text-gray-400 hover:text-indigo-400 hover:bg-slate-700 transition-all"
               >
-                <i class="fab fa-github"></i>
+                <i class="fa fa-github"></i>
               </a>
               <a
                 href="https://www.instagram.com/"
                 class="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center text-gray-400 hover:text-indigo-400 hover:bg-slate-700 transition-all"
               >
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-              <a
-                href="https://www.tiktok.com/"
-                class="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center text-gray-400 hover:text-indigo-400 hover:bg-slate-700 transition-all"
-              >
-                <i class="fa-brands fa-tiktok"></i>
+                <i class="fa fa-youtube"></i>
               </a>
               <a
                 href="https://t.me/club_gratis"
                 class="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center text-gray-400 hover:text-indigo-400 hover:bg-slate-700 transition-all"
               >
-                <i class="fab fa-telegram"></i>
+                <i class="fa fa-telegram"></i>
               </a>
             </div>
           </div>
@@ -197,9 +196,11 @@
           <div
             class="h-px bg-gradient-to-r from-transparent via-slate-600/20 to-transparent my-5"
           ></div>
+          <div class="rainbow-text">🔺</div>
 
           <div class="rainbow-text">CLUB GRATIS</div>
-          <center>
+          <div class="rainbow-text">🔻</div>
+          
      <div class="neon-box"><a href="https://t.me/club_gratis1" class="text-muted text-cyan-400">Copyright</a> ©2015-2025 <a class="italic text-blue-400">Terms</a>
      </div>
      </center>
