@@ -27,22 +27,24 @@ async function check() {
 
       const json = await res.json();
 
-      let cls = 'unknown';
+      let badge = `<span class="badge badge-unknown">${json.status}</span>`;
       if (json.status?.toLowerCase() === 'live') {
         cls = 'live'; live++;
+        badge = `<span class="badge badge-live">Live</span>`;
       } else if (json.status?.toLowerCase() === 'die') {
         cls = 'die'; die++;
+        badge = `<span class="badge badge-die">Die</span>`;
       } else if (json.status?.toLowerCase() === 'unknown') {
         cls = 'unknown'; unknown++;
       }
 
       wrapper.classList.add(cls);
       wrapper.innerHTML = `
-        <div><span class="label">Card:</span> ${json.card}</div>
-        <div><span class="label">Status:</span> ${json.status} | ${json.message}</div>
-        <div><span class="label">Bank:</span> ${json.bank}</div>
-        <div><span class="label">Type:</span> ${json.type} - ${json.category} - ${json.brand}</div>
-        <div><span class="label">Country:</span> ${json.country} ${json.emoji || ''}</div>
+      <div><span class="label">Card:</span> ${json.card}</div>
+      <div><span class="label">Status:</span> ${badge} — ${json.message}</div>
+      <div><span class="label">Bank:</span> ${json.bank}</div>
+      <div><span class="label">Type:</span> ${json.type} - ${json.category} - ${json.brand}</div>
+      <div><span class="label">Country:</span> ${json.country} ${json.emoji || ''}</div>
       `;
     } catch (err) {
       error++;
