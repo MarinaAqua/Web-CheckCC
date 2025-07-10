@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Club Gratis - BIN Generator CC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="https://raw.githubusercontent.com/MarinaAqua/MarinaAqua/main/my-profil.png"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 1rem;
+      background: #121212;
+      color: #eee;
+    }
+
+    label {
+      margin-top: 1rem;
+      display: block;
+    }
+    
+    .copyright {
+      color: #eee;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    input, button, select, textarea {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin: 0.3rem 0;
+      border-radius: 5px;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    /* Full width inputs/selects */
+    #binInput, #expFormat {
+      width: 100%;
+    }
+
+    /* Smaller width inputs/selects */
+    #countInput, #cvvInput, #cvvFormat {
+      width: 100px;
+    }
+
+    /* Input for Expiry Date (manual) */
+    #expMonth, #expYear {
+      max-width: 100px;
+    }
+
+    #expManualInputs {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      background: #0000FF;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00008B;
+    }
+
+#donatePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  color: white;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.popup-content img {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#donateBtn,
+#linkBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+#linkBtn {
+  background: transparent;
+}
+
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      margin-top: 1rem;
+      background: #222;
+      color: #A9A9A9;
+      font-family: monospace;
+      padding: 1rem;
+      border-radius: 5px;
+      resize: none;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 0.5rem;
+    }
+
+    .btn-row button {
+      flex: 1;
+    }
+
+    #cvvManualInput {
+      margin-top: 0.3rem;
+    }
+    
+      /* Rainbow Text Styles */
+    .rainbow-text {
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
+      background-size: 200% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: shimmer 5s linear infinite;
+      text-shadow: 0 0 5px #fff5, 0 0 5px #0ff6;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: 0% center;
+      }
+    }
+    
+    .social-footer {
+      margin-top: 1rem;
+      margin-bottom:1rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    .social-footer a {
+      color: #ccc;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .social-footer a:hover {
+      color: #fff;
+    }
+    
+    .copyright-footer {
+      text-align: center;
+      margin-top: 0.8rem;
+      margin-bottom:1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="rainbow-text mb-8">
+          <h1 class="text-4xl">CLUB GRATIS</h1></div>
+          
+  <h1>BIN Generator CC</h1>
+  <div class="top-buttons">
+  <button id="donateBtn">💖 Donate</button>
+  <a href="/" target="_blank" id="linkBtn">CC Check</a>
+</div>
+
+  <!-- BIN Input Section -->
+  <div>
+    <label for="binInput">BIN (6 digits or more)</label>
+    <input type="text" id="binInput" maxlength="16" placeholder="424242××××××××××" />
+  </div>
+  
+  <div id="donatePopup" style="display: none;">
+  <div class="popup-overlay"></div>
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+    <img src="https://raw.githubusercontent.com/MarinaAqua/MarinaAqua/main/qr-donate.jpg" alt="QR Code" style="max-width: 300px; width: 100%;" />
+    <p>Scan QR di atas untuk berdonasi 🙏</p>
+  </div>
+</div>
+
+  <!-- Expiry Date Section -->
+  <div>
+    <label for="expFormat">Expiry Date</label>
+    <select id="expFormat">
+      <option value="random" selected>Random MM/YY</option>
+      <option value="manual">Input Manual</option>
+      <option value="none">Not Generate</option>
+    </select>
+  </div>
+
+  <!-- Expiry Month/Year Manual Input -->
+<div id="expManualInputs" style="display:none;">
+  <select id="expMonth">
+    <option value="">Bulan</option>
+    <option value="01">01</option>
+    <option value="02">02</option>
+    <option value="03">03</option>
+    <option value="04">04</option>
+    <option value="05">05</option>
+    <option value="06">06</option>
+    <option value="07">07</option>
+    <option value="08">08</option>
+    <option value="09">09</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+
+  <select id="expYear">
+    <option value="">Tahun</option>
+    <!-- Tahun 2025–2037 -->
+    <option value="25">2025</option>
+    <option value="26">2026</option>
+    <option value="27">2027</option>
+    <option value="28">2028</option>
+    <option value="29">2029</option>
+    <option value="30">2030</option>
+    <option value="31">2031</option>
+    <option value="32">2032</option>
+    <option value="33">2033</option>
+    <option value="34">2034</option>
+    <option value="35">2035</option>
+    <option value="36">2036</option>
+    <option value="37">2037</option>
+  </select>
+</div>
+
+  <!-- CVV Section -->
+  <div>
+    <label for="cvvFormat">CVV</label>
+    <select id="cvvFormat">
+      <option value="random" selected>Random 3 digits</option>
+      <option value="manual">Input Manual</option>
+      <option value="none">None</option>
+    </select>
+  </div>
+
+  <!-- CVV Manual Input -->
+  <div id="cvvManualInput" style="display:none;">
+    <input type="text" id="cvvInput" placeholder="CVV Input" maxlength="4" />
+  </div>
+  
+  <!-- Jumlah Kartu Input Section -->
+  <div>
+    <label for="countInput">Quantity (max 100)</label>
+    <input type="number" id="countInput" min="1" max="100" value="10" />
+  </div>
+
+  <!-- Generate Button -->
+  <div>
+    <button id="generateBtn">Generate</button>
+  </div>
+
+  <!-- Result Output -->
+  <label for="result">Results</label>
+  <div>
+    <textarea id="result" readonly placeholder="Hasil kartu akan muncul di sini..."></textarea>
+  </div>
+  
+  <!-- Copy & Save Button Section -->
+  <div class="btn-row">
+    <button id="copyBtn">Copy to Clipboard</button>
+    <button id="saveBtn">Save as .txt</button>
+  </div>
+  
+  <footer class="social-footer">
+  <a href="https://github.com/MarinaAqua" target="_blank"><i class="fa fa-github"></i></a>
+  <a href="https://youtube.com/Mr.King'sOfficial" target="_blank"><i class="fa fa-youtube"></i></a>
+  <a href="https://t.me/club_gratis" target="_blank"><i class="fa fa-telegram"></i></a>
+</footer>
+
+  <div class="rainbow-text mb-8">
+    <a class="text-4xl">CLUB GRATIS</a>
+    </div>
+          <div class="copyright-footer">
+            &copy; <span id="year"></span> YourWebsiteName. Allrights reserved.
+            </div>
+            
+  <script>
+    // Luhn algorithm to generate valid card number
+    function luhnCheckDigit(number) {
+      let sum = 0;
+      let shouldDouble = true;
+      for(let i = number.length - 1; i >= 0; i--) {
+        let digit = parseInt(number.charAt(i));
+        if(shouldDouble) {
+          digit *= 2;
+          if(digit > 9) digit -= 9;
+        }
+        sum += digit;
+        shouldDouble = !shouldDouble;
+      }
+      let mod = sum % 10;
+      return mod === 0 ? 0 : 10 - mod;
+    }
+
+    function generateCardNumber(bin) {
+      const length = 16;
+      let number = bin;
+      while(number.length < length - 1) {
+        number += Math.floor(Math.random() * 10);
+      }
+      const checkDigit = luhnCheckDigit(number);
+      return number + checkDigit;
+    }
+
+    function generateExpiry(type) {
+      if(type === 'none') return '';
+      if(type === 'manual') {
+        const m = document.getElementById('expMonth').value.padStart(2, '0');
+        const y = document.getElementById('expYear').value.padStart(2, '0');
+        if(!/^(0[1-9]|1[0-2])$/.test(m)) return null;
+        if(!/^\d{2}$/.test(y)) return null;
+        return { month: m, year: y };
+      }
+      const now = new Date();
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      // getMonth: 0-11, jadi +1
+      // Tambah acak dari 0-60 bulan ke depan
+      const offset = Math.floor(Math.random() * 60);
+      month += offset;
+      year += Math.floor(month / 12);
+      month = month % 12 || 12;
+      // supaya gak 0
+      const m = String(month).padStart(2, '0');
+      const y = String(year).slice(-2);
+      return { month: m, year: y };
+    }
+
+    function generateCVV(type) {
+      if(type === 'none') return '';
+      if(type === 'manual') {
+        const cvv = document.getElementById('cvvInput').value;
+        if(!/^\d{4}$/.test(cvv)) return null;
+        return cvv;
+      }
+      return String(Math.floor(Math.random() * 900) + 100);
+    }
+
+    // Event listeners for Expiry Date & CVV options
+    document.getElementById('expFormat').addEventListener('change', (e) => {
+      document.getElementById('expManualInputs').style.display = e.target.value === 'manual' ? 'flex' : 'none';
+    });
+
+    document.getElementById('cvvFormat').addEventListener('change', (e) => {
+      document.getElementById('cvvManualInput').style.display = e.target.value === 'manual' ? 'block' : 'none';
+    });
+
+    // Generate Cards Button Click
+    document.getElementById('generateBtn').addEventListener('click', () => {
+      const bin = document.getElementById('binInput').value.trim();
+      const count = parseInt(document.getElementById('countInput').value);
+      const expType = document.getElementById('expFormat').value;
+      const cvvType = document.getElementById('cvvFormat').value;
+
+      if (!/^\d{6,16}$/.test(bin)) {
+        alert('BIN number minimum 6 digits!');
+        return;
+      }
+      if (count < 1 || count > 100) {
+        alert('Number of cards 1 to 100!');
+        return;
+      }
+
+      let output = '';
+      for(let i = 0; i < count; i++) {
+        const cardNumber = generateCardNumber(bin);
+        const expiry = generateExpiry(expType);
+        if(expiry === null) {
+          alert('date format is incorrect!');
+          return;
+        }
+        const cvv = generateCVV(cvvType);
+        if(cvv === null) {
+          alert('CVV format is incorrect!');
+          return;
+        }
+
+        let line = cardNumber;
+        if(expiry) line += `|${expiry.month}|${expiry.year}`;
+        if(cvv) line += `|${cvv}`;
+
+        output += line + '\n';
+      }
+      document.getElementById('result').value = output.trim();
+    });
+    // Popup Donate
+    const donateBtn = document.getElementById('donateBtn');
+    const donatePopup = document.getElementById('donatePopup');
+    const closeBtn = document.querySelector('.close-btn');
+    donateBtn.addEventListener('click', () => {
+      donatePopup.style.display = 'flex';
+      
+    });
+    closeBtn.addEventListener('click', () => {
+      donatePopup.style.display = 'none';
+      
+    });
+    // Klik di luar isi popup untuk tutup
+    donatePopup.addEventListener('click', (e) => {
+      if (e.target === donatePopup || e.target.classList.contains('popup-overlay')) {
+        donatePopup.style.display = 'none';
+      }
+    });
+
+    // Copy Button Click
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const result = document.getElementById('result').value;
+      if (!result) return alert('No results to copy!');
+      navigator.clipboard.writeText(result).then(() => {
+        alert('Copy To Clipboard!');
+      });
+    });
+
+    // Save Button Click
+    document.getElementById('saveBtn').addEventListener('click', () => {
+      const result = document.getElementById('result').value;
+      if (!result) return alert('No results to save!');
+
+      const blob = new Blob([result], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'generated_cards.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
