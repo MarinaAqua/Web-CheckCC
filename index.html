@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checker CC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+    textarea { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    .result-card { padding: 12px; margin-top: 12px; border-radius: 8px; }
+    .live { background: #d4f4d7; }
+    .die { background: #fdd; }
+    .unknown { background: #fff3cd; }
+    .error { background: #eee; }
+    .label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Cek Kartu Kredit</h2>
+  <textarea id="cc-input" rows="10" placeholder="4444 3333 2222 1111|12|2026|123"></textarea>
+  <br>
+  <button onclick="check()">Cek Kartu</button>
+
+  <div id="results"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
