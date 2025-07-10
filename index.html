@@ -2,27 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Checker CC</title>
+  <title>CC Checker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
-    textarea { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
-    button { padding: 10px 20px; font-size: 16px; }
-    .result-card { padding: 12px; margin-top: 12px; border-radius: 8px; }
-    .live { background: #d4f4d7; }
-    .die { background: #fdd; }
-    .unknown { background: #fff3cd; }
-    .error { background: #eee; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    .stats {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .result-card {
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 8px;
+      border-left: 6px solid #ccc;
+      background: #f8f9fa;
+    }
+
+    .live { border-color: #28a745; background: #d4edda; }
+    .die { border-color: #dc3545; background: #f8d7da; }
+    .unknown { border-color: #ffc107; background: #fff3cd; }
+    .error { border-color: #6c757d; background: #e2e3e5; }
+
     .label { font-weight: bold; }
   </style>
 </head>
 <body>
-  <h2>Cek Kartu Kredit</h2>
-  <textarea id="cc-input" rows="10" placeholder="4444 3333 2222 1111|12|2026|123"></textarea>
-  <br>
-  <button onclick="check()">Cek Kartu</button>
+  <div class="container">
+    <h2>Credit Card Checker</h2>
 
-  <div id="results"></div>
+    <textarea id="cc-input" rows="10" placeholder="4444333322221111|12|2025|123"></textarea>
+    <button onclick="check()" id="check-btn">Cek Sekarang</button>
+
+    <div class="stats" id="stats">
+      🔄 Siap mengecek kartu...
+    </div>
+
+    <div id="results"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
