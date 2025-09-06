@@ -19,7 +19,7 @@ async function check() {
     resultsDiv.appendChild(wrapper);
 
     try {
-      const res = await fetch('https://api-cc.clubgratis.web.id', {
+      const res = await fetch('https://your.api.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: card })
